@@ -37,7 +37,7 @@ async def update_admin(client, message: Message):
             for member in await message.chat.get_members(filter="administrators")
         ],
     )
-    await message.reply_text("✅️ Admin cache refreshed!")
+    await message.reply_text("✅️ admin cache refreshed!")
 
 
 @Client.on_message(command("pause") & other_filters)
@@ -48,10 +48,10 @@ async def pause(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "paused"
     ):
-        await message.reply_text("❗ **Tidak ada Lagu yang sedang diputar!**")
+        await message.reply_text("❗ **Tidak ada lagu yang sedang diputar!**")
     else:
         callsmusic.pytgcalls.pause_stream(chat_id)
-        await message.reply_text("▶️ **Paused!**")
+        await message.reply_text("▶️ **paused!**")
 
 
 @Client.on_message(command("resume") & other_filters)
@@ -62,10 +62,10 @@ async def resume(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "playing"
     ):
-        await message.reply_text("❗ **Tidak ada Lagu yang sedang dijeda!**")
+        await message.reply_text("❗ **Tidak ada lagu yang sedang dijeda!**")
     else:
         callsmusic.pytgcalls.resume_stream(chat_id)
-        await message.reply_text("⏸ **Resumed!**")
+        await message.reply_text("⏸ **resumed!**")
 
 
 @Client.on_message(command("end") & other_filters)
@@ -74,7 +74,7 @@ async def resume(_, message: Message):
 async def stop(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ **Tidak ada Lagu yang sedang diputar!**")
+        await message.reply_text("❗ **Tidak ada lagu yang sedang diputar!**")
     else:
         try:
             callsmusic.queues.clear(chat_id)
@@ -82,7 +82,7 @@ async def stop(_, message: Message):
             pass
 
         callsmusic.pytgcalls.leave_group_call(chat_id)
-        await message.reply_text("❌ **Memberhentikan Lagu!**")
+        await message.reply_text("⏹ **musik berhenti!**")
 
 
 @Client.on_message(command("skip") & other_filters)
@@ -92,7 +92,7 @@ async def skip(_, message: Message):
     global que
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ **Tidak ada Lagu Selanjutnya untuk dilewati!**")
+        await message.reply_text("❗ **Tidak ada lagu selanjutnya untuk dilewati!**")
     else:
         callsmusic.queues.task_done(chat_id)
 
@@ -103,7 +103,7 @@ async def skip(_, message: Message):
                 chat_id, callsmusic.queues.get(chat_id)["file"]
             )
 
-        await message.reply_text("⏩ **Melewati lagu saat ini!**")
+        await message.reply_text("⏩ **melewati lagu saat ini!**")
 
 
 @Client.on_message(filters.command("admincache"))
@@ -116,4 +116,4 @@ async def admincache(client, message: Message):
             for member in await message.chat.get_members(filter="administrators")
         ],
     )
-    await message.reply_text("✅️ **Daftar admin** telah **diperbarui**")
+    await message.reply_text("✅️ **Daftar admin** telah **diperbarui.**")
