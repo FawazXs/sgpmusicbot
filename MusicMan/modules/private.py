@@ -28,19 +28,18 @@ logging.basicConfig(level=logging.INFO)
 )
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f"""<b>┗┓ Haii {message.from_user.first_name} saya adalah {PROJECT_NAME} ┏┛\n
-Saya Bot Music Group, Yang dapat Memutar Lagu di Voice Chat Group Dengan cara yang Mudah
-Saya Memiliki Banyak Fitur Praktis Seperti :
-┏━━━━━━━━━━━━━━
-┣• Memutar Musik.
-┣• Mendownload Lagu.
-┣• Mencari Lagu Yang ingin di Putar atau di Download.
-┣• Gunakan Perintah » /help « untuk Mengetahui Fitur Lengkap saya
-┗━━━━━━━━━━━━━━
-❃ Managed With ❤ By {OWNER}
-❃ Thanks To [Risman](https://t.me/mrismanaziz)
+        f"""<b>Haii 🍁{message.from_user.first_name}, saya adalah {PROJECT_NAME}.\n
+Saya bot musik yang dapat memutar lagu di voice chat group dengan cara yang mudah, saya memiliki banyak fitur praktis seperti:\n
 ━━━━━━━━━━━━━━━
-Ingin Menambahkan Saya ke Grup Anda? Tambahkan Saya Ke Group Anda!
+➠ memutar Musik.
+➠ mendownload Lagu.
+➠ mencari lagu untuk diputar & di unduh.
+➠ Gunakan perintah /help untuk melihat fitur lengkap saya.
+━━━━━━━━━━━━━━━
+🍁 Created by: {OWNER}
+💖 Thanks To [SaͥᴍpͣoͫerŇaᴍiℓd ঔৣ͡ssid](https://t.me/NeetflixHD)
+━━━━━━━━━━━━━━━
+Silahkan tambahkan saya dan @asistenSgpmusik ke dalam grup anda agar dapat memutar musik di vcg.
 </b>""",
 
 # Edit Yang Perlu Lu ganti 
@@ -50,15 +49,15 @@ Ingin Menambahkan Saya ke Grup Anda? Tambahkan Saya Ke Group Anda!
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Tambahkan saya ke Grup Anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+                        "➕ Tambahkan Saya Ke Grup Anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "💬 Channel Updates", url=f"https://t.me/{UPDATES_CHANNEL}"), 
+                        "📣 CHANNEL", url=f"https://t.me/{UPDATES_CHANNEL}"), 
                     InlineKeyboardButton(
-                        "⛑ Group Support", url=f"https://t.me/{SUPPORT_GROUP}")
+                        "💬 GROUP", url=f"https://t.me/{SUPPORT_GROUP}")
                 ],[
                     InlineKeyboardButton(
-                        "🛠 Source Code 🛠", url=f"https://{SOURCE_CODE}")
+                        "🍁 OWNER", url=f"https://{SOURCE_CODE}")
                 ]
             ]
         ),
@@ -97,11 +96,11 @@ def map(pos):
     elif(pos==len(tr.HELP_MSG)-1):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
-            [InlineKeyboardButton("➕ Tambahkan saya ke Grup Anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '💬 Channel Updates', url=f"https://t.me/{UPDATES_CHANNEL}"),
-             InlineKeyboardButton(text = '⛑ Group Support', url=f"https://t.me/{SUPPORT_GROUP}")],
-            [InlineKeyboardButton(text = '🛠 Source Code 🛠', url=f"https://{SOURCE_CODE}")],
-            [InlineKeyboardButton(text = '«', callback_data = f"help+{pos-1}")]
+            [InlineKeyboardButton("➕ Tambahkan Saya Ke Grup Anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
+            [InlineKeyboardButton(text = '📣 CHANNEL', url=f"https://t.me/{UPDATES_CHANNEL}"),
+             InlineKeyboardButton(text = '💬 GROUP', url=f"https://t.me/{SUPPORT_GROUP}")],
+            [InlineKeyboardButton(text = '🍁 OWNER', url=f"https://{SOURCE_CODE}")],
+            [InlineKeyboardButton(text = '« back', callback_data = f"help+{pos-1}")]
         ]
     else:
         button = [
@@ -120,15 +119,15 @@ def map(pos):
 )
 async def start(client: Client, message: Message):
     await message.reply_text(
-        "💁🏻‍♂️ **Apakah Anda ingin mencari Link YouTube?**",
+        "💁🏻‍♂️ **apakah anda ingin mencari link youtube ?**",
         reply_markup=InlineKeyboardMarkup(
             [   
                 [    
                     InlineKeyboardButton(
-                        "✅ Ya", switch_inline_query_current_chat=""
+                        "✅ YA", switch_inline_query_current_chat=""
                     ),
                     InlineKeyboardButton(
-                        "❌ Tidak ", callback_data="close"
+                        "❌ TIDAK", callback_data="close"
                     )
                 ]
             ]
@@ -143,12 +142,12 @@ async def start(client: Client, message: Message):
 )
 async def help(client: Client, message: Message):
     await message.reply_text(
-        """**Klik Tombol dibawah untuk Melihat Cara Menggunakan Bot**""",
+        """**tekan tombol dibawah untuk melihat panduan menggunakan bot.**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "📜 Cara Menggunakan BOT 📜", url="https://t.me/Lunatic0de/20"
+                        "📜 Cara Menggunakan BOT 📜", url="https://telegra.ph/command-list-05-18"
                     )
                 ]
             ]
@@ -167,10 +166,10 @@ async def reload(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "Group Support", url=f"https://t.me/{SUPPORT_GROUP}"
+                        "💬 GROUP", url=f"https://t.me/{SUPPORT_GROUP}"
                     ),
                     InlineKeyboardButton(
-                        "Owner", url=f"https://t.me/mrismanaziz"
+                        "🍁 OWNER", url=f"https://t.me/NeetflixHD"
                     )
                 ]
             ]
