@@ -31,20 +31,20 @@ async def addchannel(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except:
         await message.reply_text(
-            "<b>Tambahkan saya sebagai admin grup Anda terlebih dahulu</b>",
+            "<b>Jadikan saya sebagai admin grup anda terlebih dahulu.</b>",
         )
         return
 
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "MusicMan"
+        user.first_name = "sgp music"
 
     try:
         await USER.join_chat(invitelink)
     except UserAlreadyParticipant:
         await message.reply_text(
-            f"<b>{user.first_name} sudah ada di obrolan Anda</b>",
+            f"<b>{user.first_name} sudah ada di grup anda.</b>",
         )
     except Exception as e:
         print(e)
@@ -54,7 +54,7 @@ async def addchannel(client, message):
         )
         return
     await message.reply_text(
-        f"<b>{user.first_name} berhasil bergabung dengan obrolan Anda</b>",
+        f"<b>{user.first_name} berhasil bergabung ke dalam grup anda.</b>",
     )
 
 
@@ -75,7 +75,7 @@ async def bye(client, message):
     if message.from_user.id in SUDO_USERS:
         left=0
         failed=0
-        await message.reply("**Asisten Meninggalkan semua obrolan**")
+        await message.reply("**Asisten meninggalkan semua obrolan.**")
         for dialog in USER.iter_dialogs():
             try:
                 await USER.leave_chat(dialog.chat.id)
@@ -104,15 +104,15 @@ async def addcchannel(client, message):
         invitelink = await client.export_chat_invite_link(chid)
     except:
         await message.reply_text(
-            "<b>Tambahkan saya sebagai admin saluran Anda terlebih dahulu</b>",
+            "<b>Tambahkan saya sebagai admin channel anda terlebih dahulu.</b>",
         )
         return
 
     try:
         user = await USER.get_me()
     except:
-        user.first_name = "MusicMan"
-
+        user.first_name = "sgp music"
+        
     try:
         await USER.join_chat(invitelink)
     except UserAlreadyParticipant:
@@ -128,6 +128,6 @@ async def addcchannel(client, message):
         )
         return
     await message.reply_text(
-        f"<b>{user.first_name} sudah bergabung dengan obrolan Anda</b>",
+        f"<b>{user.first_name} sudah bergabung ke dalam grup anda.</b>",
     )
     
