@@ -50,7 +50,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 **Sedang Mencari Lagu...**")
+    m = message.reply("🔎 **mencari lagu...**")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -67,16 +67,16 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Lagu Tidak ditemukan.\n\nCoba Masukan Judul lagu yang lebih jelas.")
+        m.edit("❌ Lagu tidak ditemukan.\n\nCoba masukkan judul lagu yang benar.")
         print(str(e))
         return
-    m.edit("⬇️ **Sedang Mendownload Lagu**")
+    m.edit("🔁 **mengunduh lagu...**")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "**🎵 Uploaded by @Lunatic0de**"
+        rep = "**🎵 Uploaded by @NeetflixHD**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -268,17 +268,17 @@ def time_to_seconds(time):
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
-        await message.reply_text("/saavn masukan judul lagu.")
+        await message.reply_text("/saavn masukkan judul lagu.")
         return
     if is_downloading:
         await message.reply_text(
-            "Downloadan yang lain sedang berlangsung, coba lagi nanti"
+            "unduhan yang lain sedang berlangsung, coba lagi nanti."
         )
         return
     is_downloading = True
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
-    m = await message.reply_text("🔎 **Sedang Mencari Lagu...**")
+    m = await message.reply_text("🔎 **mencari lagu...**")
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -287,9 +287,9 @@ async def jssong(_, message):
         sname = songs.result[0].song
         slink = songs.result[0].media_url
         ssingers = songs.result[0].singers
-        await m.edit("Downloading")
+        await m.edit("Downloading...")
         song = await download_song(slink)
-        await m.edit("Uploading")
+        await m.edit("Uploading...")
         await message.reply_audio(audio=song, title=sname, performer=ssingers)
         os.remove(song)
         await m.delete()
@@ -307,17 +307,17 @@ async def jssong(_, message):
 async def deezsong(_, message):
     global is_downloading
     if len(message.command) < 2:
-        await message.reply_text("/deezer masukan judul lagu")
+        await message.reply_text("/deezer masukkan judul lagu")
         return
     if is_downloading:
         await message.reply_text(
-            "Downloadan yang lain sedang berlangsung, coba lagi nanti"
+            "unduhan yang lain sedang berlangsung, coba lagi nanti."
         )
         return
     is_downloading = True
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
-    m = await message.reply_text("🔎 **Sedang Mencari Lagu...**")
+    m = await message.reply_text("🔎 **mencari lagu...**")
     try:
         songs = await arq.deezer(query, 1)
         if not songs.ok:
@@ -344,14 +344,14 @@ async def ytmusic(client, message: Message):
     global is_downloading
     if is_downloading:
         await message.reply_text(
-            "Downloadan yang lain sedang berlangsung, coba lagi nanti"
+            "unduhan yang lain sedang berlangsung, coba lagi nanti."
         )
         return
 
     urlissed = get_text(message)
 
     pablo = await client.send_message(
-        message.chat.id, f"`Mendapatkan {urlissed} Dari Youtube. Tunggu Sebentar.`"
+        message.chat.id, f"`Mendapatkan {urlissed} dari youtube. tunggu sebentar...`"
     )
     if not urlissed:
         await pablo.edit("Sintaks Perintah Tidak Valid, Silakan ketik `/help` Untuk Mengetahui Lebih Lanjut!")
@@ -401,7 +401,7 @@ async def ytmusic(client, message: Message):
 
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**Nama Video➠** `{thum}` \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}` \n**Link :** `{mo}`"
+    capy = f"**Judul:** `{thum}` \n**Permintaan:** `{urlissed}` \n**Channel:** `{thums}` \n**Link:** `{mo}`"
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -414,7 +414,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`Mengupload Lagu {urlissed} Dari YouTube Music!`",
+            f"`📤 Mengupload lagu {urlissed} dari youtube music!`",
             file_stark,
         ),
     )
