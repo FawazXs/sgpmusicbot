@@ -52,12 +52,12 @@ Silahkan tambahkan saya dan @asistenSgpmusik ke dalam grup anda agar dapat memut
                         "➕ Tambahkan Saya Ke Grup Anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
                 [
                     InlineKeyboardButton(
-                        "📣 CHANNEL", url=f"https://t.me/{UPDATES_CHANNEL}"), 
+                        "📣 CHANNEL", url=f"https://t.me/joinchat/m0igZdtuGl81MTll"), 
                     InlineKeyboardButton(
-                        "💬 GROUP", url=f"https://t.me/{SUPPORT_GROUP}")
+                        "💬 GROUP", url=f"https://t.me/joinchat/NTSKWi0Syhs2NzAx")
                 ],[
                     InlineKeyboardButton(
-                        "🍁 OWNER", url=f"https://{SOURCE_CODE}")
+                        "🍁 OWNER", url=f"https://t.me/NeetflixHD")
                 ]
             ]
         ),
@@ -97,9 +97,9 @@ def map(pos):
         url = f"https://t.me/{SUPPORT_GROUP}"
         button = [
             [InlineKeyboardButton("➕ Tambahkan Saya Ke Grup Anda ➕", url=f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-            [InlineKeyboardButton(text = '📣 CHANNEL', url=f"https://t.me/{UPDATES_CHANNEL}"),
-             InlineKeyboardButton(text = '💬 GROUP', url=f"https://t.me/{SUPPORT_GROUP}")],
-            [InlineKeyboardButton(text = '🍁 OWNER', url=f"https://{SOURCE_CODE}")],
+            [InlineKeyboardButton(text = '📣 CHANNEL', url=f"https://t.me/joinchat/m0igZdtuGl81MTll"),
+             InlineKeyboardButton(text = '💬 GROUP', url=f"https://t.me/joinchat/NTSKWi0Syhs2NzAx")],
+            [InlineKeyboardButton(text = '🍁 OWNER', url=f"https://t.me/NeetflixHD")],
             [InlineKeyboardButton(text = '« back', callback_data = f"help+{pos-1}")]
         ]
     else:
@@ -166,7 +166,7 @@ async def reload(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "💬 GROUP", url=f"https://t.me/{SUPPORT_GROUP}"
+                        "💬 GROUP", url=f"https://t.me/joinchat/NTSKWi0Syhs2NzAx"
                     ),
                     InlineKeyboardButton(
                         "🍁 OWNER", url=f"https://t.me/NeetflixHD"
